@@ -1,0 +1,8 @@
+fastapi[standard]
+sqlmodel
+passlib[bcrypt]
+PyWavelets
+pillow
+numpy
+opencv-python
+joblib
