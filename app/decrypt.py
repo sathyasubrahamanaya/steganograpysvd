@@ -14,12 +14,14 @@ from starlette.background import BackgroundTask
 import tempfile
 from app.security import get_current_user
 decrpyt_router = APIRouter()
+import time
 
 def clean_storage(file_name):
+    time.sleep(300)
     os.remove(file_name)
 
 @decrpyt_router.post("/decrypt")
-async def decrypt(input_file:UploadFile=File(...),current_user:User = Depends(get_current_user)):
+async def decrypt(input_file:UploadFile,current_user:User = Depends(get_current_user)):
     file = await input_file.read()
     if not os.path.exists(f"userspace/{current_user.username}"):
         os.mkdir(f"userspace/{current_user.username}")

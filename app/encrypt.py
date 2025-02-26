@@ -16,7 +16,7 @@ encrpyt_router = APIRouter()
 
 def clean_up(folder):
     try:
-        time.sleep(30)
+        time.sleep(300)
         print("cleaning up ---------->",folder)
         for file in os.listdir(folder):
             os.remove(f"{folder}/{file}")

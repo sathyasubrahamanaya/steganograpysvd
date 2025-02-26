@@ -17,7 +17,7 @@ def register(user: UserCreate, session: Session = Depends(get_session)):
     statement = select(User).where(User.username == user.username)
     existing_user = session.exec(statement).first()
     if existing_user:
-        raise JSONResponse({"Message":"User already exists","Data":{},"ErrorCode":1},status_code=200)
+        return JSONResponse({"Message":"User already exists","Data":{},"ErrorCode":1},status_code=200)
     
     # Hash the password and generate a unique API key
     hashed_password = get_password_hash(user.password)
